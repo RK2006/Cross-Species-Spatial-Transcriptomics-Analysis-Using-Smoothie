@@ -6,14 +6,14 @@ import anndata as ad
 
 # Path to gef data
 gef_path = "data/GSM9629357_CS23_E2S1.gef"
-output_path = "data/GSM9629357_CS23_E2S1.h5ad"
+output_path = "data/GSM9629357_CS23_E2S1_bin20.h5ad"
 
 print("Opening GEF file...")
 f = h5py.File(gef_path, "r")
 
 print("Loading expression and gene data...")
-expr = f["geneExp/bin1/expression"][:]
-genes = f["geneExp/bin1/gene"][:]
+expr = f["geneExp/bin20/expression"][:]
+genes = f["geneExp/bin20/gene"][:]
 
 # expr fields: x, y, MIDCount (UMI count per spot per gene)
 # genes fields: geneName, offset, count (range into expr for each gene)
