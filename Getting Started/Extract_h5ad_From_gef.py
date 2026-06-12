@@ -5,7 +5,7 @@ import scipy.sparse as sp
 import anndata as ad
 
 # Path to gef data
-gef_path = "data/GSM9629357_CS23_E2S1.gef"
+gef_path = "data/GSM9629357_CS_E2S1.gef"
 output_path = "data/GSM9629357_CS23_E2S1_bin20.h5ad"
 
 print("Opening GEF file...")
