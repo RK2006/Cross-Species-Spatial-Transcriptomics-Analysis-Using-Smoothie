@@ -1,0 +1,118 @@
+{
+  "experiment_dir": "hyperparameter_results/module_evaluation_20261009_073527",
+  "min_module_size": 10,
+  "shortlist_size": 8,
+  "deduplicate_ari": 0.995,
+  "filter_fallback_used": false,
+  "filter_thresholds": {
+    "min_fraction_active_genes": 0.95,
+    "min_species_cross_coverage": 0.8,
+    "max_cross_coverage_imbalance": 0.1,
+    "min_fraction_genes_in_meaningful_modules": 0.85,
+    "max_largest_module_fraction": 0.25,
+    "max_fraction_negative_margin": 0.1,
+    "cross_strength_floor_quantile": 0.1,
+    "computed_median_cross_strength_floor": 0.0901620306480698,
+    "computed_p10_cross_strength_floor": 0.03565797546122838
+  },
+  "category_metrics": {
+    "separation_score": [
+      [
+        "gene_margin_coverage",
+        true
+      ],
+      [
+        "median_gene_margin",
+        true
+      ],
+      [
+        "p10_gene_margin",
+        true
+      ],
+      [
+        "fraction_negative_margin",
+        false
+      ]
+    ],
+    "integration_score": [
+      [
+        "min_species_cross_coverage",
+        true
+      ],
+      [
+        "cross_coverage_imbalance",
+        false
+      ],
+      [
+        "p10_cross_strength_fraction_cross_connected",
+        true
+      ],
+      [
+        "median_cross_strength_fraction_cross_connected",
+        true
+      ],
+      [
+        "reciprocal_gene_coverage",
+        true
+      ],
+      [
+        "median_reciprocal_fraction_cross_connected",
+        true
+      ],
+      [
+        "fraction_genes_in_mixed_modules",
+        true
+      ]
+    ],
+    "module_quality_score": [
+      [
+        "median_cohesion_mouse_mouse",
+        true
+      ],
+      [
+        "median_cohesion_human_human",
+        true
+      ],
+      [
+        "median_cohesion_cross_species",
+        true
+      ],
+      [
+        "median_conserved_diversity",
+        true
+      ]
+    ],
+    "module_structure_score": [
+      [
+        "fraction_genes_in_modules_ge_10",
+        true
+      ],
+      [
+        "singleton_gene_fraction",
+        false
+      ],
+      [
+        "largest_module_fraction",
+        false
+      ]
+    ],
+    "stability_score": [
+      [
+        "mean_adjacent_ari_active_both",
+        true
+      ],
+      [
+        "min_adjacent_ari_active_both",
+        true
+      ],
+      [
+        "mean_adjacent_ari_meaningful_both",
+        true
+      ],
+      [
+        "min_adjacent_ari_meaningful_both",
+        true
+      ]
+    ]
+  }
+}

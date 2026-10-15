@@ -1,0 +1,4 @@
+name,k_intra,k_inter,cutoff_intra,cutoff_inter
+run_006,25,10,0.95,0.65
+run_007,25,10,0.95,0.7
+run_008,25,10,0.95,0.75
