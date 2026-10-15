@@ -1,0 +1,11 @@
+,value
+n_genes,15063.0
+n_modules,376.0
+n_margin_genes,14736.0
+median_gene_margin,0.9891313823985763
+p10_gene_margin,0.44803297267070413
+fraction_negative_margin,0.03745928338762215
+cross_edge_coverage,0.654052977494523
+reciprocal_gene_coverage,0.38020314678350925
+reciprocal_cross_edge_fraction,0.09245865950377866
+median_cross_strength_fraction,0.29261679688774744

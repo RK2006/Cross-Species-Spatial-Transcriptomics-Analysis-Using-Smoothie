@@ -1,0 +1,26 @@
+{
+  "experiment_dir": "hyperparameter_results/module_evaluation_20261009_073527",
+  "baseline_name": "run_049",
+  "baseline_directory": "hyperparameter_results/module_evaluation_20261009_073527/batch_16/individual_evaluations/01_run_049",
+  "dimensions": [
+    50,
+    100,
+    200,
+    500
+  ],
+  "graph_parameters": {
+    "k_intra": 50,
+    "k_inter": 50,
+    "cutoff_intra": 0.9,
+    "cutoff_inter": 0.7
+  },
+  "resolution": 1.0,
+  "leiden_seed": 0,
+  "neighbor_k": 50,
+  "sampled_pairs_per_type": 100000,
+  "random_state": 0,
+  "min_module_size": 10,
+  "pca_fit_seconds": 7.317876757006161,
+  "pca_input_dtype": "float32",
+  "note": "The no-PCA baseline was loaded from disk and not reclustered."
+}
