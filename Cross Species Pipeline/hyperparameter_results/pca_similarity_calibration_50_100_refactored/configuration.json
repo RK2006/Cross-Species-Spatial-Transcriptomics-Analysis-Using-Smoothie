@@ -1,0 +1,17 @@
+{
+  "representations": [
+    "no_pca",
+    "pca_050",
+    "pca_100"
+  ],
+  "dimensions": [
+    50,
+    100
+  ],
+  "bins_reused_from_reference_edges": 200,
+  "sampled_pairs_per_type": 100000,
+  "random_state": 0,
+  "plot_format": "png",
+  "plot_dpi": 250,
+  "similarity_note": "no_pca uses Pearson similarity; PCA uses cosine similarity of unwhitened nested PCA scores"
+}
