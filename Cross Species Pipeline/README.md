@@ -3,6 +3,9 @@
 This directory separates the reproducible mouse–human clustering workflow from
 the experiments used to choose and interpret it.
 
+The design for the next hyperparameter-optimization stage is documented in
+`docs/objective_landscape_plan.md`.
+
 ## Run order
 
 1. Run `notebooks/01_full_pipeline.ipynb` to go from the smoothed datasets and
@@ -23,14 +26,20 @@ parameters are collected near the top of the notebook.
 Cross Species Pipeline/
 ├── README.md
 ├── archive/                         exact pre-reorganization notebooks
+├── docs/
+│   └── objective_landscape_plan.md
 ├── notebooks/
 │   ├── 01_full_pipeline.ipynb       data → joint graph → Leiden modules
 │   ├── 02_evaluate_selected_clustering.ipynb
 │   └── experiments/
 │       ├── 01_grid_search.ipynb
 │       ├── 02_pca_experiments.ipynb
-│       └── 03_sobol_search.ipynb
+│       ├── 03_sobol_search.ipynb
+│       └── 04_objective_landscape_search.ipynb
 ├── src/cross_species/               reusable implementations
+│   ├── metrics.py                   13 scalar objective metrics
+│   ├── objective.py                 scoring layer (next phase)
+│   └── optimization.py              search layer (next phase)
 └── results/                         outputs made by the new notebooks
 ```
 

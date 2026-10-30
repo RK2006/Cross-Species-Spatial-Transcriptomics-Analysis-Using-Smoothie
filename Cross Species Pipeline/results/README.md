@@ -7,6 +7,7 @@ The reorganized notebooks write new artifacts here:
 - `grid_search/`: regular grid screens, stability runs, and batched evaluations
 - `pca/`: nested PCA artifacts, similarity calibration, and PC interpretation
 - `sobol/`: 32-setting representation-specific Sobol searches
+- `optimization/`: objective-vector searches and local landscape refinement
 
 Timestamped run directories prevent one experiment from overwriting another.
 Large generated contents in these folders are ignored by Git; each folder's

@@ -8,6 +8,13 @@ from .evaluation import (
     evaluate_joint_modules,
 )
 from .graph import DualGraph, dual_knn_graph
+from .metrics import (
+    METRIC_DEFINITIONS,
+    METRIC_REGISTRY,
+    MetricDefinition,
+    metric_metadata,
+    metric_vector,
+)
 from .representation import EdgeSets, StitchedProfiles, plot_edges, profile_correlation, stitch_profiles
 from .search import (
     PARAMS, adjacent_agreement, cache_neighbors, cached_graph,
@@ -18,6 +25,9 @@ __all__ = [
     "AlignedPair",
     "DualGraph",
     "EdgeSets",
+    "METRIC_DEFINITIONS",
+    "METRIC_REGISTRY",
+    "MetricDefinition",
     "PARAMS",
     "StitchedProfiles",
     "adjacent_agreement",
@@ -32,6 +42,8 @@ __all__ = [
     "gene_order_hash",
     "load_core_run",
     "load_homology",
+    "metric_metadata",
+    "metric_vector",
     "plot_edges",
     "profile_correlation",
     "review_hyperparameter_experiment",
