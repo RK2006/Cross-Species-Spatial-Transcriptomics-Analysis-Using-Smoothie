@@ -4,3 +4,32 @@ Getting Started/StartingQuiz.ipynb
 Getting Started/Mouse_Smoothie_Experiment.py
 /Initial Analysis/.ipynb_checkpoints
 /bin50_mouse_human_test
+
+# Generated Python and notebook state
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# New pipeline outputs (directory documentation and placeholders stay tracked)
+Cross Species Pipeline/results/core/*
+Cross Species Pipeline/results/evaluation/*
+Cross Species Pipeline/results/grid_search/*
+Cross Species Pipeline/results/pca/*
+Cross Species Pipeline/results/sobol/*
+Cross Species Pipeline/results/optimization/*
+!Cross Species Pipeline/results/core/.gitkeep
+!Cross Species Pipeline/results/evaluation/.gitkeep
+!Cross Species Pipeline/results/grid_search/.gitkeep
+!Cross Species Pipeline/results/pca/.gitkeep
+!Cross Species Pipeline/results/sobol/.gitkeep
+!Cross Species Pipeline/results/optimization/.gitkeep
+
+# Versioned historical runs, sorted into the new result categories
+!Cross Species Pipeline/results/evaluation/legacy/
+!Cross Species Pipeline/results/evaluation/legacy/**
+!Cross Species Pipeline/results/grid_search/legacy/
+!Cross Species Pipeline/results/grid_search/legacy/**
+!Cross Species Pipeline/results/pca/legacy/
+!Cross Species Pipeline/results/pca/legacy/**
+!Cross Species Pipeline/results/**/legacy/**/.ipynb_checkpoints/
+!Cross Species Pipeline/results/**/legacy/**/.ipynb_checkpoints/**

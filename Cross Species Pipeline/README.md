@@ -37,7 +37,7 @@ Cross Species Pipeline/
 │       ├── 03_sobol_search.ipynb
 │       └── 04_objective_landscape_search.ipynb
 ├── src/cross_species/               reusable implementations
-│   ├── metrics.py                   13 scalar objective metrics
+│   ├── metrics.py                   expanded scalar objective metric registry
 │   ├── objective.py                 scoring layer (next phase)
 │   └── optimization.py              search layer (next phase)
 └── results/                         outputs made by the new notebooks

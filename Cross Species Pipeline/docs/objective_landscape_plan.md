@@ -112,21 +112,46 @@ whereas a gene-weighted summary emphasizes the experience of a typical gene.
 
 ### 3. Construct the metric vector
 
-An initial metric vector could contain the following values.
+The implemented vector contains 65 named coordinates. Distributional metrics
+use the 10th, 25th, 50th, 75th, and 90th percentiles rather than relying on a
+single median.
 
-| Category | Candidate scalar metrics |
+| Category | Implemented scalar metrics |
 |---|---|
-| Separation | Median gene margin; 10th-percentile gene margin; fraction of negative-margin genes |
-| Integration | Median cross-strength fraction; cross-edge coverage; reciprocal gene coverage |
-| Module quality | Median mouse cohesion; median human cohesion; median cross-species cohesion; conserved diversity |
+| Separation | Five gene-margin quantiles; negative-margin fraction; worst-species 10th-percentile margin; absolute mouse-human median-margin difference |
+| Integration | Five cross-strength quantiles; five reciprocal-support quantiles; cross-edge coverage; reciprocal-gene coverage; five module species-balance quantiles; fraction of genes in mixed meaningful modules |
+| Module quality | Five quantiles each for mouse, human, and cross-species cohesion and for mouse, human, and conserved diversity; four eligibility-coverage metrics; 10th-percentile and median cross-versus-within cohesion contrast |
 | Module structure | Isolated-gene fraction; largest-module fraction; number of meaningful modules |
+
+For fair mouse-human comparisons, all three cohesion distributions use the
+same meaningful modules: each selected module must contain at least two mouse
+and two human genes and have all three cohesion values defined. All three
+diversity distributions likewise use one shared set on which mouse, human, and
+conserved diversity are defined. The eligibility-coverage coordinates record
+how much of the meaningful-module set contributed to those summaries.
+
+Module species balance is
+
+\[
+b_m = \frac{2\min(n_{m,\mathrm{mouse}}, n_{m,\mathrm{human}})}
+{n_{m,\mathrm{mouse}} + n_{m,\mathrm{human}}},
+\]
+
+so a single-species module has balance 0 and an equally divided module has
+balance 1. Cross-versus-within cohesion contrast is cross-species cohesion
+minus the average of mouse and human within-species cohesion.
 
 ARI is excluded from the initial metric vector. It can be added later as a
 separate stability analysis if needed.
 
-The stored vector should be a named record, such as one row in a table, rather
+The stored vector is a named record, such as one row in a table, rather
 than an unlabeled NumPy array. The result table should contain both the raw
 metrics and their transformed desirability values.
+
+The five quantiles from one distribution are related measurements. During
+scoring they must first be combined into a distribution-level score so that a
+property does not receive five times the weight merely because it has five
+coordinates.
 
 ## From metrics to one score
 
