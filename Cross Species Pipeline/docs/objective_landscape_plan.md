@@ -155,6 +155,35 @@ coordinates.
 
 ## From metrics to one score
 
+### Implemented first-pass score
+
+`objective.py` now provides a provisional, auditable scoring workflow:
+
+```python
+specification = educated_full_score_spec()
+result = score_objective(candidate_metric_vector, specification)
+
+result.final_score
+result.category_scores
+result.family_scores
+result.desirabilities
+result.violations
+```
+
+The fixed first estimate uses all 65 indicators and broad educated targets
+based on each metric's natural range, interpretation, and the behavior of the
+existing run-049 clustering. Related percentiles are averaged into 21 family
+scores; families are averaged into four category scores; the categories are
+combined with an equally weighted geometric mean. This prevents a metric
+family from gaining extra influence merely because it contains five
+percentiles.
+
+The targets are initial scientific assumptions rather than fitted truths.
+`specification.rules_frame()` exposes every cutoff and target plateau for
+review. The calibration-based `fit_first_pass_score_spec` workflow remains
+available as a sensitivity analysis, but the fixed specification allows all
+runs to be compared against one unchanged definition.
+
 ### Desirability transformations
 
 The raw metrics have different units, ranges, and preferred directions. Each
@@ -184,8 +213,8 @@ of \(f_C(x)\) does not change as new points are added.
 ### Category scores
 
 Several metrics measure related properties. To avoid giving one concept more
-weight merely because it has more metrics, first combine metrics within four
-categories:
+weight merely because it has more percentiles, first average desirabilities
+within metric families and then average family scores within four categories:
 
 \[
 \begin{aligned}

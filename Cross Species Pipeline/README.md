@@ -38,7 +38,7 @@ Cross Species Pipeline/
 │       └── 04_objective_landscape_search.ipynb
 ├── src/cross_species/               reusable implementations
 │   ├── metrics.py                   expanded scalar objective metric registry
-│   ├── objective.py                 scoring layer (next phase)
+│   ├── objective.py                 desirability calibration and scoring
 │   └── optimization.py              search layer (next phase)
 └── results/                         outputs made by the new notebooks
 ```
