@@ -1667,69 +1667,15 @@ def generate_sobol_settings(
     seed=0,
     k_sampling="log",
 ):
-    """Generate well-spread four-parameter settings from a scrambled Sobol sequence."""
-    import math
-    import numpy as np
-    import pandas as pd
-    from scipy.stats import qmc
+    """Backward-compatible wrapper for the shared Sobol design generator."""
+    from .optimization import generate_sobol_settings as generate
 
-    required = ("k_intra", "k_inter", "cutoff_intra", "cutoff_inter")
-    missing = [name for name in required if name not in parameter_ranges]
-    if missing:
-        raise ValueError(f"Missing parameter ranges: {missing}")
-    if n_settings < 2 or n_settings & (n_settings - 1):
-        raise ValueError("n_settings must be a power of two, such as 16, 32, or 64")
-    if k_sampling not in {"linear", "log"}:
-        raise ValueError("k_sampling must be 'linear' or 'log'")
-
-    bounds = {}
-    for name in required:
-        value = parameter_ranges[name]
-        if value is None or len(value) != 2 or any(bound is None for bound in value):
-            raise ValueError(
-                f"Fill in a numeric (minimum, maximum) range for {name}"
-            )
-        low, high = map(float, value)
-        if not low < high:
-            raise ValueError(f"{name} must have minimum < maximum")
-        if name.startswith("k_") and low < 1:
-            raise ValueError(f"{name} must be positive")
-        if name.startswith("cutoff_") and not (0 < low < high <= 1):
-            raise ValueError(f"{name} must lie in (0, 1]")
-        bounds[name] = (low, high)
-
-    # Oversampling protects against duplicate integer k combinations. The
-    # accepted settings remain in Sobol order, and the first 32 points are a
-    # balanced power-of-two prefix when no rounding duplicates occur.
-    draw_count = max(32, n_settings * 8)
-    exponent = int(math.ceil(math.log2(draw_count)))
-    unit_points = qmc.Sobol(d=4, scramble=True, seed=seed).random_base2(exponent)
-    rows, seen = [], set()
-    for sobol_index, point in enumerate(unit_points):
-        values = {}
-        for coordinate, name in enumerate(required):
-            low, high = bounds[name]
-            if name.startswith("k_"):
-                if k_sampling == "log":
-                    value = np.exp(np.log(low) + point[coordinate] * (np.log(high) - np.log(low)))
-                else:
-                    value = low + point[coordinate] * (high - low)
-                values[name] = int(np.clip(np.rint(value), np.ceil(low), np.floor(high)))
-            else:
-                values[name] = float(low + point[coordinate] * (high - low))
-        identity = (
-            values["k_intra"], values["k_inter"],
-            round(values["cutoff_intra"], 10), round(values["cutoff_inter"], 10),
-        )
-        if identity in seen:
-            continue
-        seen.add(identity)
-        rows.append({"sobol_id": len(rows), "sobol_index": sobol_index, **values})
-        if len(rows) == n_settings:
-            break
-    if len(rows) != n_settings:
-        raise RuntimeError("Unable to generate enough unique Sobol settings")
-    return pd.DataFrame(rows)
+    return generate(
+        parameter_ranges,
+        n_settings=n_settings,
+        seed=seed,
+        k_sampling=k_sampling,
+    )
 
 
 def plot_sobol_search_summaries(

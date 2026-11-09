@@ -7,7 +7,13 @@ The reorganized notebooks write new artifacts here:
 - `grid_search/`: regular grid screens, stability runs, and batched evaluations
 - `pca/`: nested PCA artifacts, similarity calibration, and PC interpretation
 - `sobol/`: 32-setting representation-specific Sobol searches
-- `optimization/`: objective-vector searches and local landscape refinement
+- `optimization/`: wide objective-vector searches, raw metric tables, and heatmaps
+- `cache/`: reusable ranked-neighbor arrays keyed to a validated gene order
+
+The wide no-PCA experiment writes to
+`optimization/wide_sobol_no_pca_512/`. Each setting has an atomic JSON
+checkpoint and a compressed label vector. The consolidated `raw_metrics.csv`
+retains all 65 unmodified indicators; heatmap normalization is display-only.
 
 Timestamped run directories prevent one experiment from overwriting another.
 Large generated contents in these folders are ignored by Git; each folder's

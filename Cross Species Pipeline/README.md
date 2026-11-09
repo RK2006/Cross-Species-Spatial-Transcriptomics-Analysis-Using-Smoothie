@@ -35,11 +35,12 @@ Cross Species Pipeline/
 │       ├── 01_grid_search.ipynb
 │       ├── 02_pca_experiments.ipynb
 │       ├── 03_sobol_search.ipynb
-│       └── 04_objective_landscape_search.ipynb
+│       ├── 04_objective_landscape_search.ipynb
+│       └── 05_wide_sobol_metric_landscape.ipynb
 ├── src/cross_species/               reusable implementations
 │   ├── metrics.py                   expanded scalar objective metric registry
 │   ├── objective.py                 desirability calibration and scoring
-│   └── optimization.py              search layer (next phase)
+│   └── optimization.py              resumable wide Sobol search and heatmap
 └── results/                         outputs made by the new notebooks
 ```
 

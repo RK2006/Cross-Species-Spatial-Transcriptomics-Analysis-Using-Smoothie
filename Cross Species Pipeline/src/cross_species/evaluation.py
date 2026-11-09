@@ -15,6 +15,7 @@ def evaluate_joint_modules(
     prof,
     *,
     expression_by_species=None,
+    neighbor_cache=None,
     k_inter=None,
     cutoff_inter=None,
     min_module_size=2,
@@ -46,6 +47,10 @@ def evaluate_joint_modules(
         spots-by-genes DataFrame, or an ``(X, gene_names)`` tuple. When given,
         spatial module scores and module diversity are computed separately in
         each species. Each gene is divided by its maximum before averaging.
+    neighbor_cache
+        Optional ranked-neighbor cache created by ``cache_neighbors``. When
+        supplied, reciprocal cross-neighbor proposals are read from its
+        inter-species arrays instead of rescanning the dense matrix.
     k_inter, cutoff_inter
         Cross-neighbor rule used to build the graph. These are needed to
         reconstruct directed proposals and identify reciprocal cross-neighbors.
@@ -172,24 +177,36 @@ def evaluate_joint_modules(
     if k_inter < 1:
         raise ValueError("k_inter must be positive")
 
-    proposal_rows, proposal_cols = [], []
-    for source_species in species_values:
-        source = np.flatnonzero(species == source_species)
-        target = np.flatnonzero(species != source_species)
-        kk = min(int(k_inter), len(target))
-        for start in range(0, len(source), matrix_block):
-            rr = source[start:start + matrix_block]
-            values = np.array(C[np.ix_(rr, target)], dtype=float, copy=True)
-            values[~np.isfinite(values)] = -np.inf
-            part = np.argpartition(-values, kk - 1, axis=1)[:, :kk]
-            weights = np.take_along_axis(values, part, axis=1)
-            keep = weights >= cutoff_inter
-            local_row, local_col = np.where(keep)
-            proposal_rows.append(rr[local_row])
-            proposal_cols.append(target[part[local_row, local_col]])
+    if neighbor_cache is not None:
+        if int(neighbor_cache.get("n", -1)) != n:
+            raise ValueError("neighbor_cache has the wrong number of genes")
+        cached_cols, cached_weights = neighbor_cache["inter"]
+        if int(k_inter) > cached_cols.shape[1]:
+            raise ValueError("neighbor_cache inter budget is smaller than k_inter")
+        weights = cached_weights[:, :int(k_inter)]
+        proposal_rows, local_col = np.where(
+            np.isfinite(weights) & (weights >= cutoff_inter)
+        )
+        proposal_cols = cached_cols[proposal_rows, local_col]
+    else:
+        proposal_rows, proposal_cols = [], []
+        for source_species in species_values:
+            source = np.flatnonzero(species == source_species)
+            target = np.flatnonzero(species != source_species)
+            kk = min(int(k_inter), len(target))
+            for start in range(0, len(source), matrix_block):
+                rr = source[start:start + matrix_block]
+                values = np.array(C[np.ix_(rr, target)], dtype=float, copy=True)
+                values[~np.isfinite(values)] = -np.inf
+                part = np.argpartition(-values, kk - 1, axis=1)[:, :kk]
+                weights = np.take_along_axis(values, part, axis=1)
+                keep = weights >= cutoff_inter
+                local_row, local_col = np.where(keep)
+                proposal_rows.append(rr[local_row])
+                proposal_cols.append(target[part[local_row, local_col]])
 
-    proposal_rows = np.concatenate(proposal_rows)
-    proposal_cols = np.concatenate(proposal_cols)
+        proposal_rows = np.concatenate(proposal_rows)
+        proposal_cols = np.concatenate(proposal_cols)
     proposals = sparse.csr_matrix(
         (np.ones(len(proposal_rows), dtype=np.int8),
          (proposal_rows, proposal_cols)),
