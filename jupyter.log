@@ -1,0 +1,430 @@
+[W 2026-09-07 11:01:42.813 ServerApp] notebook | error adding extension (enabled: True): The module 'notebook' could not be found (No module named 'notebook'). Are you sure the extension is installed?
+    Traceback (most recent call last):
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/extension/manager.py", line 365, in add_extension
+        extpkg = ExtensionPackage(name=extension_name, enabled=enabled)
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/extension/manager.py", line 219, in __init__
+        self._load_metadata()
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/extension/manager.py", line 234, in _load_metadata
+        raise ExtensionModuleNotFound(msg) from None
+    jupyter_server.extension.utils.ExtensionModuleNotFound: The module 'notebook' could not be found (No module named 'notebook'). Are you sure the extension is installed?
+[I 2026-09-07 11:01:42.816 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-09-07 11:01:42.818 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-09-07 11:01:42.820 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-09-07 11:01:43.383 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-09-07 11:01:43.421 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-09-07 11:01:43.422 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2026-09-07 11:01:43.423 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-09-07 11:01:43.428 LabApp] JupyterLab extension loaded from /home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyterlab
+[I 2026-09-07 11:01:43.428 LabApp] JupyterLab application directory is /home/rak333/miniconda3/envs/smoothie_env/share/jupyter/lab
+[I 2026-09-07 11:01:43.429 LabApp] Extension Manager is 'pypi'.
+[I 2026-09-07 11:01:43.518 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-09-07 11:01:43.518 ServerApp] The port 8026 is already in use, trying another port.
+[I 2026-09-07 11:01:43.518 ServerApp] The port 8027 is already in use, trying another port.
+[I 2026-09-07 11:01:43.518 ServerApp] Serving notebooks from local directory: /local/workdir/rak333/Cross Species Spatial Transcriptomics Project
+[I 2026-09-07 11:01:43.518 ServerApp] Jupyter Server 2.19.0 is running at:
+[I 2026-09-07 11:01:43.518 ServerApp] http://cbsuvlaminck6.biohpc.cornell.edu:8028/lab
+[I 2026-09-07 11:01:43.518 ServerApp]     http://127.0.0.1:8028/lab
+[I 2026-09-07 11:01:43.518 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-09-07 11:01:43.813 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-09-08 09:54:51.106 ServerApp] 302 GET / (@127.0.0.1) 4.97ms
+[I 2026-09-08 09:54:51.113 LabApp] 302 GET /lab? (@127.0.0.1) 0.40ms
+[I 2026-09-08 09:55:06.777 ServerApp] User cbe6753f1d0342b9a86cc4dd567dcb29 logged in.
+[I 2026-09-08 09:55:06.778 ServerApp] 302 POST /login?next=%2Flab%3F (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 615.90ms
+[I 2026-09-08 09:55:12.851 LabApp] Build is up to date
+[W 2026-09-08 09:55:20.189 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[W 2026-09-08 09:55:20.905 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788875720850 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.58ms referer=http://localhost:8028/lab?
+[W 2026-09-08 09:55:20.905 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788875720850 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_pearsonR.npy
+[W 2026-09-08 09:55:20.905 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788875720851 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.32ms referer=http://localhost:8028/lab?
+[W 2026-09-08 09:55:20.905 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788875720851 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_gene_names.npy
+[I 2026-09-08 09:55:21.419 ServerApp] Kernel started: ad43a20f-b539-46ea-8db7-8a08c013cce3
+[I 2026-09-08 09:55:21.470 ServerApp] Kernel started: 02215e4e-8a09-4422-ba61-aa1bb1a2254d
+[I 2026-09-08 09:55:28.943 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-08 09:55:28.944 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-08 09:55:28.945 ServerApp] The websocket_ping_timeout (90000) cannot be longer than the websocket_ping_interval (30000).
+    Setting websocket_ping_timeout=30000
+[I 2026-09-08 09:55:42.597 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-08 09:55:42.597 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-08 09:55:42.663 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:f6482123-db4e-4ec8-bfa0-4d08b26466b5
+[I 2026-09-08 09:59:20.606 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 09:59:22.227 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-08 09:59:22.227 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-08 10:01:22.251 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:05:24.596 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:07:26.504 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:09:27.641 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:09:34.420 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:11:38.612 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:13:40.516 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:15:42.606 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:19:45.589 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:21:47.700 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:23:48.957 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:25:50.908 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:28:03.227 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:52:18.699 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 10:52:41.461 ServerApp] Kernel interrupted: ad43a20f-b539-46ea-8db7-8a08c013cce3
+[I 2026-09-08 10:54:20.294 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[I 2026-09-08 11:09:36.911 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:f5ba5c2c-dc0b-43c3-8fa1-511d06cb89dd
+[I 2026-09-08 11:09:36.912 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:7b8e57c6-e25c-47f4-a83b-2849439fbd75
+[I 2026-09-08 11:09:39.888 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-08 11:09:39.889 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-08 11:09:39.912 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-08 11:09:39.912 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-08 11:09:40.006 LabApp] Build is up to date
+[I 2026-09-08 11:09:40.025 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:a2d9e7fb-79e8-42fd-b806-eee575c2282a
+[I 2026-09-08 11:09:40.026 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:3022b9cb-1fed-447f-b3d0-85707b8c3095
+/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+[W 2026-09-08 11:09:40.207 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[W 2026-09-08 11:09:40.241 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-08 11:09:41.695 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-08 11:09:41.695 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-08 11:09:41.986 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788880181976 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.67ms referer=http://localhost:8028/lab/tree/Cross%20Species%20Pipeline/Full%20Pipeline.ipynb
+[W 2026-09-08 11:09:41.986 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788880181976 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_pearsonR.npy
+[W 2026-09-08 11:09:41.986 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788880181976 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.87ms referer=http://localhost:8028/lab/tree/Cross%20Species%20Pipeline/Full%20Pipeline.ipynb
+[W 2026-09-08 11:09:41.986 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788880181976 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_gene_names.npy
+[I 2026-09-08 11:09:42.388 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-08 11:09:42.389 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-08 11:11:40.455 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-08 11:11:40.455 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-08 11:13:40.522 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-08 11:13:40.522 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-08 11:21:40.586 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-08 11:21:40.586 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-08 11:27:40.654 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-08 11:27:40.654 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-08 11:29:41.615 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-08 11:29:41.616 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-08 11:48:41.698 ServerApp] WebSocket ping timeout after 116800 ms.
+[W 2026-09-08 11:48:42.389 ServerApp] WebSocket ping timeout after 117491 ms.
+[I 2026-09-08 11:48:46.700 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:150191ab-42f9-433c-8ad4-09cd06952c60
+[I 2026-09-08 11:48:47.390 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:f4dd98ec-6f5d-466c-8754-a77528f5db51
+[I 2026-09-09 13:38:41.127 ServerApp] 302 GET / (@127.0.0.1) 52.50ms
+[I 2026-09-09 13:38:51.367 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-09 13:38:51.369 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-09 13:38:51.625 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-09 13:38:51.635 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-09 13:38:51.762 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:779b8d9e-e2d3-4b76-83d4-a6de5dfaa696
+[I 2026-09-09 13:38:51.833 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:7aeccc64-297b-483b-a54d-7da9f41578a3
+[I 2026-09-09 13:38:51.880 LabApp] Build is up to date
+[W 2026-09-09 13:38:52.076 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-09 13:38:52.112 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-09 13:38:52.648 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-09 13:38:52.649 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-09 13:38:53.051 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788975532956 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.53ms referer=http://localhost:8028/lab?
+[W 2026-09-09 13:38:53.051 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1788975532956 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_pearsonR.npy
+[W 2026-09-09 13:38:53.052 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788975532957 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.31ms referer=http://localhost:8028/lab?
+[W 2026-09-09 13:38:53.052 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1788975532957 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_gene_names.npy
+[I 2026-09-09 13:38:53.201 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-09 13:38:53.202 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[W 2026-09-09 14:44:22.654 ServerApp] WebSocket ping timeout after 119864 ms.
+[W 2026-09-09 14:44:23.203 ServerApp] WebSocket ping timeout after 119870 ms.
+[I 2026-09-09 14:44:27.668 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:2a9307e4-abdb-4a43-aeee-bbaa85a61c43
+[I 2026-09-09 14:44:28.204 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:03dfd125-e814-4093-bcce-e421ce8d7453
+[I 2026-09-11 12:43:53.794 ServerApp] 302 GET / (@127.0.0.1) 57.91ms
+[I 2026-09-11 12:44:04.405 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-11 12:44:04.414 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-11 12:44:04.595 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-11 12:44:04.645 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-11 12:44:04.737 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:6ab1e1a3-9558-4917-9871-39dbad23deb4
+[I 2026-09-11 12:44:04.746 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:9d132ed7-a494-44b5-bb2d-fb352c31ce1d
+[I 2026-09-11 12:44:04.819 LabApp] Build is up to date
+[W 2026-09-11 12:44:04.966 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-11 12:44:05.008 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-11 12:44:05.521 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-11 12:44:05.522 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-11 12:44:06.132 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1789145046062 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.46ms referer=http://localhost:8028/lab?
+[W 2026-09-11 12:44:06.132 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1789145046062 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_gene_names.npy
+[W 2026-09-11 12:44:06.133 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1789145046061 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.66ms referer=http://localhost:8028/lab?
+[W 2026-09-11 12:44:06.133 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1789145046061 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_pearsonR.npy
+[I 2026-09-11 12:44:06.260 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-11 12:44:06.261 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[W 2026-09-11 12:51:06.262 ServerApp] WebSocket ping timeout after 116064 ms.
+[I 2026-09-11 12:51:11.265 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:7c941b11-f761-453d-b9f3-c0b522a97298
+[W 2026-09-11 12:51:35.524 ServerApp] WebSocket ping timeout after 119512 ms.
+[I 2026-09-11 12:51:40.527 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:b92afb04-b38e-4294-a3ab-8cdabb4e3c3d
+[I 2026-09-22 09:55:44.276 ServerApp] 302 GET / (@127.0.0.1) 57.73ms
+[I 2026-09-22 09:55:56.413 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-22 09:55:56.414 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-22 09:55:56.704 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-22 09:55:57.000 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-22 09:55:57.001 LabApp] Build is up to date
+[I 2026-09-22 09:55:57.019 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:885dbbd5-91e5-4204-ade0-5c04f572d0a8
+[I 2026-09-22 09:55:57.148 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:2bfc3d1d-640b-4140-82d8-010d5215a89c
+[W 2026-09-22 09:55:57.204 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-22 09:55:57.237 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-22 09:55:57.756 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-22 09:55:57.793 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-22 09:55:57.993 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1790085357934 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.76ms referer=http://localhost:8028/lab?
+[W 2026-09-22 09:55:57.993 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_gene_names.npy?content=0&hash=0&1790085357934 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_gene_names.npy
+[W 2026-09-22 09:55:58.041 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1790085357934 (cbe6753f1d0342b9a86cc4dd567dcb29@127.0.0.1) 0.99ms referer=http://localhost:8028/lab?
+[W 2026-09-22 09:55:58.041 ServerApp] 404 GET /api/contents/pearsonR/mouse_E1S1_165_bin50_pearsonR.npy?content=0&hash=0&1790085357934 (127.0.0.1): No such file or directory: pearsonR/mouse_E1S1_165_bin50_pearsonR.npy
+[I 2026-09-22 09:55:58.300 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-22 09:55:58.362 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-22 09:57:59.237 ServerApp] Saving file at /bin50_mouse_human_test/bin50_mouse_human_test.ipynb
+[W 2026-09-22 09:57:59.237 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-22 10:00:00.210 ServerApp] Saving file at /bin50_mouse_human_test/bin50_mouse_human_test.ipynb
+[W 2026-09-22 10:00:00.211 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-22 10:06:02.442 ServerApp] Saving file at /bin50_mouse_human_test/bin50_mouse_human_test.ipynb
+[W 2026-09-22 10:06:02.442 ServerApp] Notebook bin50_mouse_human_test/bin50_mouse_human_test.ipynb is not trusted
+[I 2026-09-22 10:10:04.046 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:9ecb3d33-2ff9-4a0e-8e47-9d539a0cb7e7
+[I 2026-09-22 10:12:02.642 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:12:02.642 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:14:02.702 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:14:02.702 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:16:03.640 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:16:03.640 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:18:04.665 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:18:04.665 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:20:05.637 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:20:05.637 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:22:06.641 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:22:06.642 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:47:57.664 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:47:57.664 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:49:57.726 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:49:57.727 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:51:58.640 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:51:58.640 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 10:57:59.643 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 10:57:59.643 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-22 11:19:05.665 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-22 11:19:05.665 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-22 11:37:57.794 ServerApp] WebSocket ping timeout after 119946 ms.
+[I 2026-09-22 11:38:02.798 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:d9e4dcc8-237e-416c-ab34-e9f0e172cd7f
+[I 2026-09-25 13:19:29.720 ServerApp] 302 GET / (@127.0.0.1) 57.71ms
+[I 2026-09-25 13:19:44.390 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-25 13:19:44.393 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-25 13:19:44.626 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-25 13:19:44.638 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-25 13:19:44.744 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:775d18e6-df5d-40b7-be9c-4dc224130369
+[I 2026-09-25 13:19:44.752 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:77d22c2a-ce94-4fc2-9581-6feb5866eaea
+[W 2026-09-25 13:19:44.892 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-25 13:19:44.894 LabApp] Build is up to date
+[I 2026-09-25 13:19:45.598 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-25 13:19:45.658 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-09-25 16:35:15.663 ServerApp] WebSocket ping timeout after 94951 ms.
+[I 2026-09-25 16:35:20.700 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:df7bced3-7772-4d91-af15-55e83ce56261
+[I 2026-09-28 17:31:32.288 ServerApp] 302 GET / (@127.0.0.1) 50.93ms
+[I 2026-09-28 17:31:44.587 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-28 17:31:44.589 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-28 17:31:45.072 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-28 17:31:45.075 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-28 17:31:45.184 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:9b40727d-d779-45fd-8928-0ae755423579
+[I 2026-09-28 17:31:45.186 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:11a25620-754a-446c-a5d4-cbc94ae280ef
+[I 2026-09-28 17:31:45.382 LabApp] Build is up to date
+[W 2026-09-28 17:31:46.423 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-28 17:31:47.247 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-28 17:31:47.253 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-28 17:35:46.711 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-28 17:35:46.711 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-28 18:03:17.255 ServerApp] WebSocket ping timeout after 118500 ms.
+[I 2026-09-28 18:03:22.257 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:c0df1ceb-8a70-4604-ba90-c02561585584
+[I 2026-09-28 18:03:50.121 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-28 18:03:50.122 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-28 18:03:50.122 ServerApp] Restoring connection for ad43a20f-b539-46ea-8db7-8a08c013cce3:c0df1ceb-8a70-4604-ba90-c02561585584
+[W 2026-09-28 18:06:50.125 ServerApp] WebSocket ping timeout after 102913 ms.
+[I 2026-09-28 18:06:55.127 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:c0df1ceb-8a70-4604-ba90-c02561585584
+[I 2026-09-29 09:27:45.066 ServerApp] 302 GET / (@127.0.0.1) 50.27ms
+[I 2026-09-29 09:27:59.304 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-29 09:27:59.306 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-29 09:27:59.650 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-29 09:27:59.651 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-29 09:27:59.896 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:5af58b35-917f-4774-a530-cf6f62f782b5
+[I 2026-09-29 09:27:59.902 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:0cb6e144-5314-484f-98f6-840dd5fe56d3
+[I 2026-09-29 09:27:59.957 LabApp] Build is up to date
+[W 2026-09-29 09:28:06.399 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-29 09:28:06.796 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-29 09:28:06.796 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-29 09:32:07.626 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-29 09:32:07.626 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-29 09:36:11.640 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-29 09:36:11.640 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-29 10:31:17.734 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:5763bd10-3f37-4dd7-8290-9f3a4ad8750c
+[I 2026-09-29 10:31:18.748 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-29 10:31:18.748 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-29 10:31:18.775 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-09-29 10:31:18.776 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-09-29 10:31:18.888 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:be71fa45-c471-4e84-b514-cc90e015bdc2
+[I 2026-09-29 10:31:18.902 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:8da32c00-5516-4f74-ad9c-ab22f2eae5eb
+[I 2026-09-29 10:31:18.928 LabApp] Build is up to date
+[W 2026-09-29 10:31:18.972 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-29 10:31:19.235 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-09-29 10:31:19.235 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-09-29 10:33:19.095 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-29 10:33:19.095 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-09-29 10:35:19.757 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-09-29 10:35:19.757 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-09-29 11:43:49.240 ServerApp] WebSocket ping timeout after 119918 ms.
+[I 2026-09-29 11:43:54.371 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:a72956d8-e33e-4528-a11a-2cfcf711b502
+[I 2026-10-02 12:20:16.902 ServerApp] 302 GET / (@127.0.0.1) 57.35ms
+[I 2026-10-02 12:20:30.519 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-02 12:20:30.521 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-02 12:20:30.733 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-02 12:20:30.747 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-02 12:20:30.847 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:9e908ad9-8ea3-4791-a9ba-40ddd2d14061
+[I 2026-10-02 12:20:30.924 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:f1e9172b-c4f0-4326-ac93-e16954602f34
+[I 2026-10-02 12:20:30.959 LabApp] Build is up to date
+[W 2026-10-02 12:20:31.052 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-02 12:20:31.791 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-02 12:20:31.791 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-02 12:22:31.287 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-02 12:22:31.289 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-02 12:24:32.630 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-02 12:24:32.634 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-02 12:26:33.040 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-02 12:26:33.044 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-02 12:36:34.546 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-02 12:36:34.547 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-10-02 12:56:01.794 ServerApp] WebSocket ping timeout after 115954 ms.
+[I 2026-10-02 12:56:06.807 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[I 2026-10-02 13:06:29.204 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-02 13:06:29.211 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-02 13:06:29.211 ServerApp] Restoring connection for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[W 2026-10-02 15:58:29.217 ServerApp] WebSocket ping timeout after 119994 ms.
+[I 2026-10-02 15:58:34.232 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[I 2026-10-02 15:58:55.658 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-02 15:58:55.665 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-02 15:58:55.665 ServerApp] Restoring connection for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[W 2026-10-02 16:53:55.667 ServerApp] WebSocket ping timeout after 119984 ms.
+[I 2026-10-02 16:54:00.668 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[I 2026-10-02 16:58:39.698 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-02 16:58:39.698 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-02 16:58:39.698 ServerApp] Restoring connection for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[W 2026-10-02 22:38:09.702 ServerApp] WebSocket ping timeout after 119973 ms.
+[I 2026-10-02 22:38:14.722 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:96736e96-d0f5-443b-84fb-827f3dcef57d
+[I 2026-10-08 22:09:05.459 ServerApp] 302 GET / (@127.0.0.1) 0.60ms
+[I 2026-10-08 22:09:05.485 LabApp] 302 GET /lab? (@127.0.0.1) 0.46ms
+[I 2026-10-08 22:09:10.708 ServerApp] User 33bb144b5c3d4a80a75509603bc6b889 logged in.
+[I 2026-10-08 22:09:10.708 ServerApp] 302 POST /login?next=%2Flab%3F (33bb144b5c3d4a80a75509603bc6b889@127.0.0.1) 872.81ms
+[I 2026-10-08 22:09:19.789 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client)[C 2026-10-12 13:25:49.604 ServerApp] received signal 15, stopping
+[I 2026-10-12 13:25:51.842 ServerApp] Shutting down 4 extensions
+[I 2026-10-12 13:25:51.887 ServerApp] AsyncIOLoopKernelRestarter: restarting kernel (1/5), keep random ports
+[I 2026-10-12 13:25:51.901 ServerApp] Shutting down 2 kernels
+[I 2026-10-12 13:25:52.255 ServerApp] Kernel shutdown: 404c1551-0835-4844-9c78-7656370d481a
+[I 2026-10-12 13:25:52.256 ServerApp] Kernel shutdown: 63973526-6831-4b31-9c2e-b46e458f00f1
+[E 2026-10-12 13:25:52.513 ServerApp] Exception in callback functools.partial(<bound method IOLoop._discard_future_result of <tornado.platform.asyncio.AsyncIOMainLoop object at 0x7facabd5ff10>>, <Task finished name='Task-2164838' coro=<ServerApp._stop() done, defined at /home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/serverapp.py:3223> exception=InvalidStateError('Exception is not set.')>)
+    Traceback (most recent call last):
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/tornado/ioloop.py", line 758, in _run_callback
+        ret = callback()
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/tornado/ioloop.py", line 782, in _discard_future_result
+        future.result()
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/serverapp.py", line 3225, in _stop
+        await self._cleanup()
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/serverapp.py", line 3165, in _cleanup
+        await self.cleanup_kernels()
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/serverapp.py", line 2864, in cleanup_kernels
+        await ensure_async(self.kernel_manager.shutdown_all())
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+        result = await obj
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_client/multikernelmanager.py", line 369, in _async_shutdown_all
+        await asyncio.gather(*futs)
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_server/services/kernels/kernelmanager.py", line 446, in _async_shutdown_kernel
+        return await self.pinned_superclass._async_shutdown_kernel(
+      File "/home/rak333/miniconda3/envs/smoothie_env/lib/python3.10/site-packages/jupyter_client/multikernelmanager.py", line 320, in _async_shutdown_kernel
+        if not km.ready.cancelled() and km.ready.exception():
+    asyncio.exceptions.InvalidStateError: Exception is not set.
+[W 2026-10-12 13:26:02.385 ServerApp] Wait for final termination of kernel timed out - continuing...
+.ipynb is not trusted
+[I 2026-10-08 22:33:40.516 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-08 22:33:40.517 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-08 22:35:40.386 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-08 22:35:40.386 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-08 22:41:40.537 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-08 22:41:40.538 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:21:40.839 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-09 07:21:40.839 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:22:15.053 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:21dce3bb-a404-4a25-9fd2-30076820ac88
+[I 2026-10-09 07:22:16.572 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:22:16.573 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:22:16.600 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 07:22:16.600 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 07:22:16.722 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:dde219e2-9c87-4197-9ca7-a38904a936b7
+[I 2026-10-09 07:22:16.770 LabApp] Build is up to date
+[W 2026-10-09 07:22:16.810 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:22:17.122 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:22:17.123 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:23:31.867 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:05d784a9-2b9e-40ad-9278-e2faad240c15
+[I 2026-10-09 07:24:05.716 ServerApp] 302 GET / (@127.0.0.1) 0.31ms
+[I 2026-10-09 07:24:06.724 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:24:06.724 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:24:06.749 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 07:24:06.749 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 07:24:06.804 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:0142a3f5-7a99-4779-9fba-7ffcca4d0552
+[I 2026-10-09 07:24:07.050 LabApp] Build is up to date
+[W 2026-10-09 07:24:07.081 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:24:07.435 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:24:07.436 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:26:08.195 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-09 07:26:08.196 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:35:11.117 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:3945a155-2f16-4b29-9358-fcdee237280d
+[I 2026-10-09 07:35:11.718 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:35:11.718 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:35:11.739 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 07:35:11.739 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 07:35:11.809 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:85f6ea58-daeb-4201-9668-674f37ead29b
+[I 2026-10-09 07:35:12.002 LabApp] Build is up to date
+[W 2026-10-09 07:35:12.120 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:35:12.446 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 07:35:12.446 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 07:35:14.554 ServerApp] Kernel interrupted: ad43a20f-b539-46ea-8db7-8a08c013cce3
+[I 2026-10-09 07:37:12.285 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-09 07:37:12.285 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 07:43:12.396 ServerApp] Saving file at /Cross Species Pipeline/Full Pipeline.ipynb
+[W 2026-10-09 07:43:12.396 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[W 2026-10-09 08:28:12.447 ServerApp] WebSocket ping timeout after 119991 ms.
+[I 2026-10-09 08:28:17.450 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:ba0e2803-711d-4823-be83-f93306c5951e
+[I 2026-10-09 09:38:57.142 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 09:38:57.143 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 09:38:57.143 ServerApp] Discarding 10 buffered messages for ad43a20f-b539-46ea-8db7-8a08c013cce3:ba0e2803-711d-4823-be83-f93306c5951e
+[I 2026-10-09 09:38:57.171 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 09:38:57.172 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 09:38:57.282 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:27f429e6-7f17-46c8-9041-1466805dfba2
+[W 2026-10-09 09:38:57.354 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 09:38:57.358 LabApp] Build is up to date
+[I 2026-10-09 09:38:57.672 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 09:38:57.672 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 09:39:21.490 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:93e92669-fcbd-4740-b1bc-8f7875c60790
+[I 2026-10-09 09:39:21.834 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 09:39:21.838 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 09:39:21.862 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 09:39:21.862 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 09:39:21.978 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:a70ceccb-76d6-4f43-b220-c0cd692decd0
+[I 2026-10-09 09:39:22.030 LabApp] Build is up to date
+[W 2026-10-09 09:39:22.057 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 09:39:22.372 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 09:39:22.372 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-10-09 12:05:22.374 ServerApp] WebSocket ping timeout after 119990 ms.
+[I 2026-10-09 12:05:27.379 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:c303df05-247d-47b0-8ea4-e0ea5e88708a
+[I 2026-10-09 12:21:53.474 ServerApp] 302 GET / (@127.0.0.1) 5.43ms
+[I 2026-10-09 12:21:55.900 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 12:21:55.900 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 12:21:55.954 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 12:21:55.964 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 12:21:56.051 LabApp] Build is up to date
+[I 2026-10-09 12:21:56.078 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:b7b15433-e291-4d13-81b1-5034225d26ab
+[I 2026-10-09 12:21:56.156 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:51d18619-fd3e-4010-961a-f4d15fc10654
+[W 2026-10-09 12:21:56.329 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 12:21:56.789 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 12:21:56.789 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-10-09 12:47:56.792 ServerApp] WebSocket ping timeout after 119863 ms.
+[I 2026-10-09 12:48:01.794 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:35e9ae0b-3ccf-433b-b3da-8f59bf1757fa
+[I 2026-10-09 13:03:11.088 ServerApp] 302 GET / (@127.0.0.1) 0.33ms
+[I 2026-10-09 13:03:12.211 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 13:03:12.211 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[I 2026-10-09 13:03:12.234 ServerApp] Adapting from protocol version 5.3 (kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d) to 5.4 (client).
+[I 2026-10-09 13:03:12.234 ServerApp] Connecting to kernel 02215e4e-8a09-4422-ba61-aa1bb1a2254d.
+[I 2026-10-09 13:03:12.357 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:42bda436-3044-4da7-b2c0-41cc838da483
+[I 2026-10-09 13:03:12.367 ServerApp] Starting buffering for 02215e4e-8a09-4422-ba61-aa1bb1a2254d:c1553708-bc3f-4245-8297-2be24fafed84
+[I 2026-10-09 13:03:12.390 LabApp] Build is up to date
+[W 2026-10-09 13:03:12.464 ServerApp] Notebook Cross Species Pipeline/Full Pipeline.ipynb is not trusted
+[I 2026-10-09 13:03:13.018 ServerApp] Adapting from protocol version 5.3 (kernel ad43a20f-b539-46ea-8db7-8a08c013cce3) to 5.4 (client).
+[I 2026-10-09 13:03:13.019 ServerApp] Connecting to kernel ad43a20f-b539-46ea-8db7-8a08c013cce3.
+[W 2026-10-09 15:05:43.023 ServerApp] WebSocket ping timeout after 119995 ms.
+[I 2026-10-09 15:05:48.041 ServerApp] Starting buffering for ad43a20f-b539-46ea-8db7-8a08c013cce3:c83f461e-0d74-49fe-9e3b-219b9448c8ad
+[C 2026-10-12 13:25:49.636 ServerApp] received signal 15, stopping
+[I 2026-10-12 13:25:51.842 ServerApp] Shutting down 4 extensions
+[I 2026-10-12 13:25:51.843 ServerApp] Shutting down 2 kernels
+[I 2026-10-12 13:25:52.255 ServerApp] Kernel shutdown: ad43a20f-b539-46ea-8db7-8a08c013cce3
+[I 2026-10-12 13:25:52.256 ServerApp] Kernel shutdown: 02215e4e-8a09-4422-ba61-aa1bb1a2254d
+[W 2026-10-12 13:26:02.385 ServerApp] Wait for final termination of kernel timed out - continuing...

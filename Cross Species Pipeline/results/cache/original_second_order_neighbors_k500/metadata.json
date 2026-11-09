@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "n": 15063,
+  "split": 8283,
+  "max_intra": 500,
+  "max_inter": 500,
+  "gene_order_sha256": "e6ca1cf251e6b4a0923afad47bda4c629999d84dc5659c26bd0b12873a069743"
+}
