@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import gc
+from itertools import combinations
 import json
 import math
 from pathlib import Path
@@ -11,6 +12,7 @@ import traceback
 from typing import Sequence
 
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 import numpy as np
 import pandas as pd
 from scipy.cluster.hierarchy import leaves_list, linkage
@@ -312,9 +314,17 @@ def plot_metric_heatmap(
     *,
     metrics: Sequence[str] = KEY_HEATMAP_METRICS,
     cluster_runs: bool = True,
+    sort_by: str | Sequence[str] | None = None,
+    ascending: bool | Sequence[bool] = True,
+    title: str | None = None,
     show: bool = False,
 ):
-    """Plot selected raw indicators after display-only row normalization."""
+    """Plot selected raw indicators after display-only row normalization.
+
+    ``sort_by`` may name columns in either ``settings`` or ``raw_metrics``.
+    It takes precedence over hierarchical clustering and can be a sequence for
+    lexicographic ordering.
+    """
     metrics = [metric for metric in metrics if metric in raw_metrics]
     if not metrics:
         raise ValueError("none of the requested heatmap metrics are available")
@@ -325,11 +335,39 @@ def plot_metric_heatmap(
     matrix = normalized.to_numpy(dtype=float).T
 
     order = np.arange(len(common))
-    if cluster_runs and len(common) > 2:
+    order_description = "Sobol order"
+    if sort_by is not None:
+        keys = [sort_by] if isinstance(sort_by, str) else list(sort_by)
+        if not keys:
+            raise ValueError("sort_by must contain at least one column")
+        ordering = pd.DataFrame(index=common)
+        for key in keys:
+            if key in settings:
+                ordering[key] = settings.loc[common, key]
+            elif key in raw_metrics:
+                ordering[key] = raw_metrics.loc[common, key]
+            else:
+                raise ValueError(f"sort column is unavailable: {key}")
+        sorted_index = ordering.sort_values(
+            keys, ascending=ascending, na_position="last", kind="stable"
+        ).index
+        order = common.get_indexer(sorted_index)
+        directions = (
+            [ascending] * len(keys) if isinstance(ascending, (bool, np.bool_))
+            else list(ascending)
+        )
+        if len(directions) != len(keys):
+            raise ValueError("ascending must be one bool or match sort_by")
+        order_description = "sorted by " + ", ".join(
+            f"{key} ({'low→high' if direction else 'high→low'})"
+            for key, direction in zip(keys, directions)
+        )
+    elif cluster_runs and len(common) > 2:
         clustering_matrix = np.nan_to_num(normalized.to_numpy(dtype=float), nan=0.5)
         distances = pdist(clustering_matrix, metric="euclidean")
         if np.any(distances > 0):
             order = leaves_list(linkage(distances, method="average"))
+            order_description = "clustered by raw metric profile"
     matrix = matrix[:, order]
     setting_values = setting_values.iloc[order]
 
@@ -357,14 +395,14 @@ def plot_metric_heatmap(
     image = ax_metrics.imshow(matrix, aspect="auto", cmap="viridis", vmin=0, vmax=1, interpolation="nearest")
     labels = [f"{METRIC_DIRECTIONS.get(metric, '↑')}  {metric.replace('_', ' ')}" for metric in metrics]
     ax_metrics.set_yticks(range(len(metrics)), labels)
-    ax_metrics.set_xlabel(f"{len(common)} completed Sobol runs; columns clustered by raw metric profile")
+    ax_metrics.set_xlabel(f"{len(common)} completed Sobol runs; columns {order_description}")
     if len(common) <= 64:
         ax_metrics.set_xticks(range(len(common)), [str(common[index]) for index in order], rotation=90, fontsize=6)
     else:
         ax_metrics.set_xticks([])
     colorbar = fig.colorbar(image, cax=ax_color)
     colorbar.set_label("Within-metric robust position (Q10=0, Q90=1)")
-    fig.suptitle("Raw clustering indicators across the Sobol search")
+    fig.suptitle(title or "Raw clustering indicators across the Sobol search")
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -379,6 +417,294 @@ def plot_metric_heatmap(
     else:
         plt.close(fig)
     return fig, normalized
+
+
+def plot_pairwise_parameter_landscapes(
+    summary: pd.DataFrame,
+    output_path,
+    *,
+    value: str = "final_score",
+    bins: int = 6,
+    aggregation: str = "median",
+    minimum_bin_count: int = 3,
+    show: bool = False,
+):
+    """Plot all six two-parameter landscapes, marginalizing over the other two.
+
+    The two neighbor-count axes are binned on a logarithmic scale. Cutoffs are
+    binned linearly. Each cell shows the requested aggregate and the number of
+    runs contributing to it; sparsely occupied cells are left blank.
+    """
+    if bins < 2:
+        raise ValueError("bins must be at least 2")
+    required = [*PARAMETERS, value]
+    missing = [column for column in required if column not in summary]
+    if missing:
+        raise ValueError(f"summary is missing columns: {missing}")
+    if aggregation not in {"median", "mean"}:
+        raise ValueError("aggregation must be 'median' or 'mean'")
+
+    frame = summary.loc[:, required].apply(pd.to_numeric, errors="coerce").dropna()
+    if frame.empty:
+        raise ValueError("no finite landscape values are available")
+    binned = pd.DataFrame(index=frame.index)
+    labels = {}
+    for parameter in PARAMETERS:
+        values = frame[parameter].to_numpy(dtype=float)
+        if parameter.startswith("k_"):
+            edges = np.geomspace(values.min(), values.max(), bins + 1)
+            edges[0] = np.nextafter(edges[0], -np.inf)
+            labels[parameter] = [f"{value:.0f}" for value in np.sqrt(edges[:-1] * edges[1:])]
+        else:
+            edges = np.linspace(values.min(), values.max(), bins + 1)
+            edges[0] = np.nextafter(edges[0], -np.inf)
+            labels[parameter] = [f"{value:.3f}" for value in (edges[:-1] + edges[1:]) / 2]
+        binned[parameter] = pd.cut(values, edges, labels=False, include_lowest=True)
+    binned[value] = frame[value]
+
+    finite_values = frame[value].to_numpy(dtype=float)
+    color_low = min(0.0, float(np.nanquantile(finite_values, 0.02)))
+    color_high = float(np.nanquantile(finite_values, 0.98))
+    if color_high <= color_low:
+        color_high = float(np.nanmax(finite_values))
+    pairs = list(combinations(PARAMETERS, 2))
+    fig, axes = plt.subplots(2, 3, figsize=(18, 10), dpi=180, constrained_layout=True)
+    image = None
+    for ax, (vertical, horizontal) in zip(axes.flat, pairs):
+        grouped = binned.groupby([vertical, horizontal], observed=True)[value]
+        aggregate = getattr(grouped, aggregation)().unstack()
+        counts = grouped.count().unstack()
+        aggregate = aggregate.reindex(index=range(bins), columns=range(bins))
+        counts = counts.reindex(index=range(bins), columns=range(bins)).fillna(0)
+        matrix = aggregate.to_numpy(dtype=float)
+        matrix[counts.to_numpy() < minimum_bin_count] = np.nan
+        image = ax.imshow(
+            matrix, origin="lower", aspect="auto", cmap="viridis",
+            vmin=color_low, vmax=color_high, interpolation="nearest",
+        )
+        ax.set_xticks(range(bins), labels[horizontal], rotation=45, ha="right")
+        ax.set_yticks(range(bins), labels[vertical])
+        ax.set_xlabel(horizontal.replace("_", " "))
+        ax.set_ylabel(vertical.replace("_", " "))
+        ax.set_title(f"{aggregation.title()} {value.replace('_', ' ')}")
+        for row in range(bins):
+            for column in range(bins):
+                count = int(counts.iloc[row, column])
+                result = matrix[row, column]
+                if np.isfinite(result):
+                    color = "black" if result > (color_low + color_high) / 2 else "white"
+                    ax.text(
+                        column, row, f"{result:.3f}\nn={count}",
+                        ha="center", va="center", fontsize=6, color=color,
+                    )
+    if image is not None:
+        colorbar = fig.colorbar(image, ax=axes, shrink=0.85, pad=0.02)
+        colorbar.set_label(f"{aggregation.title()} {value.replace('_', ' ')}")
+    fig.suptitle(
+        f"Pairwise hyperparameter landscapes ({aggregation} over the other two parameters)",
+        fontsize=15,
+    )
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, bbox_inches="tight")
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
+    return fig
+
+
+def _parameter_bin_summary(
+    parameter_values: pd.Series,
+    metric_values: pd.Series,
+    *,
+    bins: int,
+) -> pd.DataFrame:
+    """Return display-only median and IQR guides for a one-parameter plot."""
+    finite = np.isfinite(parameter_values) & np.isfinite(metric_values)
+    x = parameter_values.loc[finite].astype(float)
+    y = metric_values.loc[finite].astype(float)
+    if x.empty or x.min() >= x.max():
+        return pd.DataFrame(columns=["center", "p25", "median", "p75", "count"])
+    if parameter_values.name.startswith("k_"):
+        edges = np.geomspace(x.min(), x.max(), bins + 1)
+        centers = np.sqrt(edges[:-1] * edges[1:])
+    else:
+        edges = np.linspace(x.min(), x.max(), bins + 1)
+        centers = (edges[:-1] + edges[1:]) / 2
+    edges[0] = np.nextafter(edges[0], -np.inf)
+    groups = pd.cut(x, edges, labels=False, include_lowest=True)
+    values = pd.DataFrame({"group": groups, "value": y}).groupby("group", observed=True)["value"]
+    result = values.agg(
+        p25=lambda values: values.quantile(0.25),
+        median="median",
+        p75=lambda values: values.quantile(0.75),
+        count="count",
+    ).reindex(range(bins))
+    result.insert(0, "center", centers)
+    return result
+
+
+def plot_indicator_pairwise_scatter(
+    summary: pd.DataFrame,
+    metric_values: pd.Series,
+    output_path,
+    *,
+    metric_name: str | None = None,
+    show: bool = False,
+):
+    """Plot all six exact pairwise parameter views, colored by one indicator."""
+    metric_name = metric_name or metric_values.name or "indicator"
+    frame = summary.loc[:, list(PARAMETERS)].copy()
+    frame[metric_name] = pd.to_numeric(metric_values, errors="coerce")
+    frame = frame.apply(pd.to_numeric, errors="coerce").dropna()
+    if frame.empty:
+        raise ValueError(f"no finite values are available for {metric_name}")
+    color_low, color_high = frame[metric_name].min(), frame[metric_name].max()
+    if color_high <= color_low:
+        color_low -= 0.5
+        color_high += 0.5
+
+    pairs = list(combinations(PARAMETERS, 2))
+    fig, axes = plt.subplots(2, 3, figsize=(17, 10), dpi=180, constrained_layout=True)
+    image = None
+    for ax, (horizontal, vertical) in zip(axes.flat, pairs):
+        image = ax.scatter(
+            frame[horizontal], frame[vertical], c=frame[metric_name],
+            cmap="viridis", vmin=color_low, vmax=color_high,
+            s=20, alpha=0.82, linewidths=0, rasterized=True,
+        )
+        if horizontal.startswith("k_"):
+            ax.set_xscale("log")
+        if vertical.startswith("k_"):
+            ax.set_yscale("log")
+        ax.set_xlabel(horizontal.replace("_", " "))
+        ax.set_ylabel(vertical.replace("_", " "))
+        ax.grid(alpha=0.15, linewidth=0.6)
+    if image is not None:
+        colorbar = fig.colorbar(image, ax=axes, shrink=0.86, pad=0.02)
+        colorbar.set_label(metric_name.replace("_", " "))
+    direction = METRIC_DIRECTIONS.get(metric_name, "↑")
+    fig.suptitle(
+        f"{metric_name.replace('_', ' ')} ({direction}): exact Sobol runs across parameter pairs\n"
+        f"n={len(frame)}; color shows the raw indicator value",
+        fontsize=15,
+    )
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, bbox_inches="tight")
+    if show:
+        plt.show()
+    return fig
+
+
+def plot_indicator_main_effects(
+    summary: pd.DataFrame,
+    metric_values: pd.Series,
+    output_path,
+    *,
+    metric_name: str | None = None,
+    guide_bins: int = 12,
+    show: bool = False,
+):
+    """Plot one indicator against each parameter without discarding raw points."""
+    metric_name = metric_name or metric_values.name or "indicator"
+    frame = summary.loc[:, list(PARAMETERS)].copy()
+    frame[metric_name] = pd.to_numeric(metric_values, errors="coerce")
+    frame = frame.apply(pd.to_numeric, errors="coerce")
+    fig, axes = plt.subplots(2, 2, figsize=(13, 9), dpi=180, constrained_layout=True)
+    for ax, parameter in zip(axes.flat, PARAMETERS):
+        finite = frame[[parameter, metric_name]].dropna()
+        ax.scatter(
+            finite[parameter], finite[metric_name],
+            s=15, alpha=0.38, color="#3366a6", linewidths=0, rasterized=True,
+            label="individual run",
+        )
+        guide = _parameter_bin_summary(
+            finite[parameter].rename(parameter), finite[metric_name], bins=guide_bins,
+        ).dropna(subset=["median"])
+        if not guide.empty:
+            ax.fill_between(
+                guide["center"].to_numpy(), guide["p25"].to_numpy(),
+                guide["p75"].to_numpy(), color="#e69500", alpha=0.20,
+                label="binned IQR guide",
+            )
+            ax.plot(
+                guide["center"], guide["median"], color="#c56b00", linewidth=2,
+                marker="o", markersize=3, label="binned median guide",
+            )
+        if parameter.startswith("k_"):
+            ax.set_xscale("log")
+        correlation = finite[parameter].corr(finite[metric_name], method="spearman")
+        ax.set_title(f"Spearman ρ = {correlation:.2f}")
+        ax.set_xlabel(parameter.replace("_", " "))
+        ax.set_ylabel(metric_name.replace("_", " "))
+        ax.grid(alpha=0.15, linewidth=0.6)
+    handles, labels = axes.flat[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="outside lower center", ncol=3, frameon=False)
+    direction = METRIC_DIRECTIONS.get(metric_name, "↑")
+    fig.suptitle(
+        f"{metric_name.replace('_', ' ')} ({direction}) versus each hyperparameter\n"
+        "Points are exact runs; lines and bands are display-only median/IQR guides",
+        fontsize=15,
+    )
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, bbox_inches="tight")
+    if show:
+        plt.show()
+    return fig
+
+
+def plot_important_indicator_relationships(
+    summary: pd.DataFrame,
+    raw_metrics: pd.DataFrame,
+    output_dir,
+    *,
+    metrics: Sequence[str] = KEY_HEATMAP_METRICS,
+    guide_bins: int = 12,
+    combined_pdf_name: str = "important_indicator_parameter_plots.pdf",
+    show: bool = False,
+) -> pd.DataFrame:
+    """Create pairwise and main-effect figures for every selected indicator."""
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    available = [metric for metric in metrics if metric in raw_metrics]
+    if not available:
+        raise ValueError("none of the requested indicators are available")
+    manifest_rows = []
+    pdf_path = output_dir / combined_pdf_name
+    with PdfPages(pdf_path) as pdf:
+        for metric in available:
+            pairwise_path = output_dir / f"{metric}_pairwise.png"
+            effects_path = output_dir / f"{metric}_main_effects.png"
+            pairwise = plot_indicator_pairwise_scatter(
+                summary, raw_metrics[metric], pairwise_path,
+                metric_name=metric, show=show,
+            )
+            pdf.savefig(pairwise, bbox_inches="tight")
+            effects = plot_indicator_main_effects(
+                summary, raw_metrics[metric], effects_path,
+                metric_name=metric, guide_bins=guide_bins, show=show,
+            )
+            pdf.savefig(effects, bbox_inches="tight")
+            if not show:
+                plt.close(pairwise)
+                plt.close(effects)
+            finite = pd.to_numeric(raw_metrics[metric], errors="coerce").dropna()
+            manifest_rows.append({
+                "metric": metric,
+                "direction": METRIC_DIRECTIONS.get(metric, "↑"),
+                "n_finite": len(finite),
+                "minimum": finite.min(),
+                "median": finite.median(),
+                "maximum": finite.max(),
+                "pairwise_plot": pairwise_path.name,
+                "main_effects_plot": effects_path.name,
+            })
+    manifest = pd.DataFrame(manifest_rows)
+    manifest.to_csv(output_dir / "plot_manifest.csv", index=False)
+    return manifest
 
 
 def run_wide_sobol_search(
@@ -569,5 +895,8 @@ __all__ = [
     "DEFAULT_PARAMETER_RANGES", "KEY_HEATMAP_METRICS", "PARAMETERS",
     "SOBOL_CHECKPOINTS", "collect_search_results", "generate_sobol_settings",
     "load_neighbor_cache", "order_settings_fast_first", "plot_metric_heatmap",
+    "plot_important_indicator_relationships", "plot_indicator_main_effects",
+    "plot_indicator_pairwise_scatter",
+    "plot_pairwise_parameter_landscapes",
     "prepare_neighbor_cache", "run_wide_sobol_search", "save_neighbor_cache",
 ]
